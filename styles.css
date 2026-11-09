@@ -1,0 +1,182 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-paper: var(--paper);
+  --color-sage: var(--sage);
+  --color-sky: var(--sky);
+  --color-lavender: var(--lavender);
+  --color-butter: var(--butter);
+  --color-rose: var(--rose);
+  --color-ink: var(--ink);
+  --font-display: "Fredoka", ui-rounded, sans-serif;
+  --font-body: "Nunito", system-ui, sans-serif;
+  --font-hand: "Caveat", cursive;
+}
+
+:root {
+  --radius: 0.9rem;
+  --paper: oklch(0.966 0.017 88);
+  --sage: oklch(0.76 0.042 135);
+  --sky: oklch(0.8 0.045 240);
+  --lavender: oklch(0.8 0.055 295);
+  --butter: oklch(0.89 0.07 98);
+  --rose: oklch(0.79 0.055 5);
+  --ink: oklch(0.33 0.008 270);
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: oklch(0.99 0.006 90);
+  --card-foreground: var(--ink);
+  --popover: var(--card);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
+  --secondary: var(--sky);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.93 0.02 90);
+  --muted-foreground: oklch(0.45 0.01 270);
+  --accent: var(--butter);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.6 0.15 25);
+  --destructive-foreground: var(--paper);
+  --border: var(--ink);
+  --input: var(--ink);
+  --ring: var(--lavender);
+  --shadow-sticker: 3px 4px 0 color-mix(in oklab, var(--ink) 85%, transparent);
+  --shadow-soft: 0 8px 20px -10px color-mix(in oklab, var(--ink) 40%, transparent);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    background-image:
+      radial-gradient(color-mix(in oklab, var(--ink) 7%, transparent) 1px, transparent 1px),
+      radial-gradient(color-mix(in oklab, var(--sage) 25%, transparent) 1px, transparent 1px);
+    background-size: 22px 22px, 37px 37px;
+    background-position: 0 0, 11px 17px;
+  }
+  h1, h2, h3 { font-family: var(--font-display); }
+  :focus-visible { outline: 3px dashed var(--lavender); outline-offset: 3px; }
+}
+
+@utility font-hand { font-family: var(--font-hand); }
+@utility font-display { font-family: var(--font-display); }
+
+@utility scrap-card {
+  background: var(--card);
+  border: 2px solid var(--ink);
+  border-radius: 14px 18px 12px 20px;
+  box-shadow: var(--shadow-sticker);
+}
+@utility notebook {
+  background-color: var(--card);
+  background-image: linear-gradient(color-mix(in oklab, var(--sky) 45%, transparent) 1px, transparent 1px);
+  background-size: 100% 28px;
+}
+@utility polaroid {
+  background: var(--card);
+  padding: 10px 10px 34px;
+  border: 1.5px solid color-mix(in oklab, var(--ink) 30%, transparent);
+  box-shadow: var(--shadow-soft);
+}
+@utility tape {
+  position: absolute;
+  width: 90px;
+  height: 24px;
+  background: color-mix(in oklab, var(--butter) 75%, transparent);
+  border-left: 2px dashed color-mix(in oklab, var(--ink) 15%, transparent);
+  border-right: 2px dashed color-mix(in oklab, var(--ink) 15%, transparent);
+}
+@utility scribble {
+  background-image: linear-gradient(transparent 62%, color-mix(in oklab, var(--butter) 90%, transparent) 62%, color-mix(in oklab, var(--butter) 90%, transparent) 92%, transparent 92%);
+  padding: 0 0.15em;
+}
+@utility btn-scrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.75rem 1.3rem;
+  border: 2.5px solid var(--ink);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: var(--shadow-sticker);
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+  cursor: pointer;
+  &:hover { transform: translate(-1px, -2px) rotate(-1deg); background: var(--butter); }
+  &:active { transform: translate(2px, 3px); box-shadow: none; }
+  &:disabled { opacity: 0.6; cursor: wait; }
+}
+@utility bubble {
+  position: relative;
+  background: var(--card);
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  padding: 0.6rem 0.9rem;
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+.meme-img { filter: drop-shadow(3px 4px 0 color-mix(in oklab, var(--ink) 25%, transparent)); }
+.wobble:hover { animation: wobble 0.5s ease-in-out; }
+@keyframes wobble { 25% { transform: rotate(-5deg); } 75% { transform: rotate(5deg); } }
+@keyframes floaty { 50% { transform: translateY(-8px); } }
+.floaty { animation: floaty 4s ease-in-out infinite; }
+@keyframes pop-in { from { transform: scale(0.6) rotate(-8deg); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.pop-in { animation: pop-in 0.35s cubic-bezier(.3,1.6,.6,1) both; }
+@keyframes turn-out { to { transform: perspective(1200px) rotateY(-80deg) translateX(-20%); opacity: 0; } }
+.page-turn { transform-origin: left center; animation: turn-out 0.65s ease-in forwards; }
+@keyframes orbit { to { transform: rotate(360deg); } }
+.orbit { animation: orbit 1.6s linear infinite; }
+@keyframes confetti-fall { to { transform: translateY(105vh) rotate(720deg); } }
+.confetti-piece { position: fixed; top: -20px; width: 10px; height: 14px; animation: confetti-fall 2.4s ease-in forwards; z-index: 60; pointer-events: none; }
+@keyframes gather { from { transform: translate(var(--x), var(--y)) scale(0.4); opacity: 0; } to { transform: translate(0,0) scale(1); opacity: 1; } }
+.gather { animation: gather 1s ease-out both; }
+@keyframes flame { 50% { transform: scaleY(1.2) rotate(3deg); } }
+.flame { transform-origin: bottom; animation: flame 0.5s ease-in-out infinite; }
+.flip-wrap { perspective: 900px; }
+.flip-inner { transition: transform 0.55s; transform-style: preserve-3d; position: relative; }
+.flip-inner.flipped { transform: rotateY(180deg); }
+.flip-face { backface-visibility: hidden; position: absolute; inset: 0; }
+.flip-back { transform: rotateY(180deg); }
+.env-flap { transform-origin: top; transition: transform 0.6s; }
+.env-open .env-flap { transform: rotateX(180deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  html { scroll-behavior: auto; }
+}

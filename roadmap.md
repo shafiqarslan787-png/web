@@ -1,0 +1,5 @@
+- [x] Replace the birthday letter with the supplied wording.
+- [x] Remove the two unwanted scrapbook entries, including previously saved defaults.
+- [x] Add all six uploaded memes with funny captions and the uploaded video.
+- [x] Verify the scrapbook, letter, and existing page navigation.
+- [x] Rename the site from "The Amy Archives" to "Zama Zargi" everywhere it shows.
